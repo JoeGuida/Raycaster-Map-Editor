@@ -1,3 +1,6 @@
+#include<imgui.h>
+#include<imgui_impl_glfw.h>
+#include<imgui_impl_opengl3.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/vec2.hpp>
@@ -14,7 +17,7 @@ void processInput(GLFWwindow* window, int key, int scancode, int action, int mod
 int main() { 
     
     // ---------------------------------------------------------------------------------------------------- 
-    // Setup GLFW, GLAD, initialize window
+    // Setup GLFW, GLAD, ImGUI
     // ---------------------------------------------------------------------------------------------------- 
 
     // Initialize GLFW
@@ -39,7 +42,14 @@ int main() {
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
-    
+   
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void) io;
+    ImGui::StyleColorsDark();
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init("#version 330");
+
     // ---------------------------------------------------------------------------------------------------- 
     // Render Loop
     // ---------------------------------------------------------------------------------------------------- 
