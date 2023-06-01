@@ -7,9 +7,9 @@ find_package(X11 REQUIRED)
 
 add_library(glfw STATIC IMPORTED)
 set_target_properties(glfw PROPERTIES
-        IMPORTED_LOCATION $ENV{GLFW_DIR}/build/lib/libglfw3.a
-        INTERFACE_INCLUDE_DIRECTORIES $ENV{GLFW_DIR}/include
-        )
+    IMPORTED_LOCATION $ENV{GLFW_DIR}/build/lib/libglfw3.a
+    INTERFACE_INCLUDE_DIRECTORIES $ENV{GLFW_DIR}/include
+)
 
 include_directories($ENV{GLAD_DIR}/include $ENV{GLM_DIR} $ENV{IMGUI_DIR})
 file(GLOB imgui_sources $ENV{IMGUI_DIR}/**.cpp)
